@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import morgan from 'morgan';
 import connectDb from './db.js';
 import cors from 'cors';
+import userRoutes from './routes/userRoutes.js';
 
 dotenv.config();
 
@@ -14,6 +15,8 @@ connectDb();
 app.use(express.json());
 app.use(morgan('dev'));
 app.use(cors());
+
+app.use('/api/users', userRoutes);
 
 app.get('/', (req, res) => {
     res.json({ message: 'S Ahmed Naim' });
